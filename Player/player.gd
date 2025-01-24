@@ -1,15 +1,28 @@
 extends CharacterBody2D
 
+@export var character_body_2d: CharacterBody2D
+@export var speed: int = 1000
+
+const ACCELERATION = 100
+const MAX_SPEED: int = 100
+const FRICTION = 10
+
+var player: CharacterBody2D
+var max_speed: int = 100
+
+
 func _physics_process(delta):
 	var input_vector = Vector2.ZERO
 	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+	input_vector = input_vector.normalized()
 	
 	if input_vector != Vector2.ZERO:
-		velocity = input_vector
+		velocity += input_vector * ACCELERATION * delta
+		velocity = velocity.limit_length(MAX_SPEED * delta)
 	else:
-		velocity = Vector2.ZERO
-		
+		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
+
 	move_and_collide(velocity)
 
 
