@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://5navwgkscm60"]
+
+[node name="GrassEffect" type="AnimatedSprite2D"]

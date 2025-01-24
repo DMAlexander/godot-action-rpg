@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2w5y4fvwqbpn"]
+
+[ext_resource type="Script" path="res://Enemies/bat.gd" id="1_k21bw"]
+
+[node name="Bat" type="CharacterBody2D"]
+script = ExtResource("1_k21bw")
+
+[node name="CharacterBody2D" type="AnimatedSprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
