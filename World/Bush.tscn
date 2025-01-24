@@ -1,14 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://b31l2k2ywdvh2"]
+[gd_scene load_steps=4 format=3 uid="uid://b31l2k2ywdvh2"]
 
+[ext_resource type="Texture2D" uid="uid://c34dlvmym435g" path="res://Shadows/LargeShadow.png" id="1_d12vd"]
 [ext_resource type="Texture2D" uid="uid://bqgsh1w0vsdat" path="res://World/Bush.png" id="1_vt85h"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_abndh"]
-radius = 15.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tr2r0"]
 
 [node name="Bush" type="StaticBody2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="ShadowSprite" type="Sprite2D" parent="."]
+position = Vector2(0, 3)
+texture = ExtResource("1_d12vd")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, -4)
 texture = ExtResource("1_vt85h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_abndh")
+rotation = -0.0279253
+shape = SubResource("CapsuleShape2D_tr2r0")
