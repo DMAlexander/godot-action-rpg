@@ -1,8 +1,9 @@
 extends CharacterBody2D
 
 const ACCELERATION = 500
-const MAX_SPEED: int = 100
+const MAX_SPEED: int = 80
 const FRICTION = 500
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var player: CharacterBody2D
 var max_speed: int = 100
@@ -15,10 +16,13 @@ func _physics_process(delta):
 	input_vector = input_vector.normalized()
 	
 	if input_vector != Vector2.ZERO:
+		if input_vector.x > 0:
+			animation_player.play("RunRight")
+		else:
+			animation_player.play("RunLeft")
 		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
-		#velocity += input_vector * ACCELERATION * delta
-		#velocity = velocity.limit_length(MAX_SPEED)
 	else:
+		animation_player.play("IdleRight")
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 
 	move_and_collide(velocity * delta)
