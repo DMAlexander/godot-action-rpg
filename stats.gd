@@ -1,5 +1,23 @@
 extends Node
 
+@export var max_health = 3
+@export var health: int:
+	get:
+		return max_health
+	set(value):
+		max_health = value
+
+func _process(delta):
+	if health <= 0:
+		emit_signal("no_health")
+
+signal no_health
+
+func set_health(value):
+	health = value
+	if health <= 0:
+		emit_signal("no_health")
+
 #@export(int) var max_health = 1 setget set_max_health
 #var health = max_health setget set_health
 #

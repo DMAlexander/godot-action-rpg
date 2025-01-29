@@ -96,5 +96,14 @@ func _on_Hurtbox_invincibility_ended():
 
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
-	velocity = area.knockback_vector * 120
+#	stats.health -= 1
+#	if stats.health <= 0:
+#		queue_free()
+#	velocity = area.knockback_vector * 120
 #	queue_free()
+	stats.health -= area.damage
+	velocity = area.knockback_vector * 120
+
+
+func _on_stats_no_health() -> void:
+	queue_free()

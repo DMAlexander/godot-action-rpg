@@ -4,3 +4,7 @@
 
 [node name="Stats" type="Node"]
 script = ExtResource("1_ys02c")
+max_health = 4
+health = 4
+
+[connection signal="no_health" from="." to="." method="_on_no_health"]
