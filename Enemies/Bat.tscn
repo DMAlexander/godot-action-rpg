@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://b2w5y4fvwqbpn"]
+[gd_scene load_steps=12 format=3 uid="uid://b2w5y4fvwqbpn"]
 
 [ext_resource type="Script" path="res://Enemies/bat.gd" id="1_k21bw"]
 [ext_resource type="Texture2D" uid="uid://p6ov3mpokpwu" path="res://Enemies/Bat.png" id="2_y8k1p"]
+[ext_resource type="PackedScene" uid="uid://b1ydx3qstwluv" path="res://Overlap/Hurtbox.tscn" id="3_2eq0t"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w4ggi"]
 atlas = ExtResource("2_y8k1p")
@@ -47,14 +48,34 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y3fcj"]
+radius = 5.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8vktp"]
 radius = 9.0
 
 [node name="Bat" type="CharacterBody2D"]
+collision_layer = 64
+collision_mask = 2
 script = ExtResource("1_k21bw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -14)
 sprite_frames = SubResource("SpriteFrames_kpid8")
+autoplay = "default"
+frame_progress = 0.983168
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -3)
 shape = SubResource("CircleShape2D_y3fcj")
+
+[node name="Hurtbox" parent="." instance=ExtResource("3_2eq0t")]
+position = Vector2(37, -18)
+collision_layer = 8
+collision_mask = 16
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+position = Vector2(-37, 8)
+shape = SubResource("CapsuleShape2D_8vktp")
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+
+[editable path="Hurtbox"]
