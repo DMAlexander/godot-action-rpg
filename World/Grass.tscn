@@ -21,6 +21,7 @@ shape = SubResource("CircleShape2D_o3raf")
 [node name="Hurtbox" parent="." instance=ExtResource("3_v2531")]
 collision_layer = 8
 collision_mask = 16
+show_hit = false
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 

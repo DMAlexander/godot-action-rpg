@@ -4,9 +4,10 @@ var player = null
 
 func can_see_player():
 	return player != null
-	
-func _on_PlayerDetectionZone_body_entered(body):
+
+func _on_body_entered(body: Node2D) -> void:
 	player = body
-	
-func _on_PlayerDetectionZone_body_exited(_body):
+
+
+func _on_body_exited(body: Node2D) -> void:
 	player = null

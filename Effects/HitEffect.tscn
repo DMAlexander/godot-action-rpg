@@ -21,7 +21,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_00yqc")
 }],
-"loop": true,
+"loop": false,
 "name": &"Animate",
 "speed": 5.0
 }]
@@ -36,3 +36,5 @@ script = ExtResource("2_muj4s")
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_grcfb")
 autoplay = true
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

@@ -3,9 +3,15 @@
 [ext_resource type="Script" path="res://Enemies/player_detection_zone.gd" id="1_rlngo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7ks33"]
+radius = 76.0066
 
 [node name="PlayerDetectionZone" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
 script = ExtResource("1_rlngo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_7ks33")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
