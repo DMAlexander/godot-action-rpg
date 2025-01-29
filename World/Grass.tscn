@@ -11,11 +11,11 @@ radius = 9.0
 script = ExtResource("1_qe1mh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(8, 8)
 texture = ExtResource("2_bfjor")
 offset = Vector2(-8, -8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(8, 8)
 shape = SubResource("CircleShape2D_o3raf")
 
 [node name="Hurtbox" parent="." instance=ExtResource("3_v2531")]

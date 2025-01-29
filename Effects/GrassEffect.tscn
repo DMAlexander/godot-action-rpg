@@ -76,7 +76,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_henob")
 }],
-"loop": true,
+"loop": false,
 "name": &"Animate",
 "speed": 15.0
 }]
@@ -87,3 +87,5 @@ animation = &"Animate"
 autoplay = "Animate"
 offset = Vector2(-8, -8)
 script = ExtResource("2_r02lb")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
