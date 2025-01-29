@@ -46,14 +46,12 @@ func _physics_process(delta: float) -> void:
 		CHASE:
 			var player = player_detection_zone.player
 			if player != null:
-				var direction = (player.global_position - global_position).normalized()
-				velocity = velocity.move_toward(direction * MAX_SPEED, ACCELERATION * delta)
+				var direction = position.direction_to(player.global_position)
+				velocity = velocity.move_toward(direction * MAX_SPEED, ACCELERATION)
 			else:
 				state = IDLE
 			animated_sprite_2d.flip_h = velocity.x < 0
-			
 	move_and_slide()
-
 
 #	knockback = move_and_slide(knockback)
 	
