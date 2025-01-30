@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://cdj3jl0wooxj2"]
+[gd_scene load_steps=15 format=4 uid="uid://cdj3jl0wooxj2"]
 
 [ext_resource type="PackedScene" uid="uid://b31l2k2ywdvh2" path="res://World/Bush.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://cps2uvpja6xto" path="res://Player/Player.tscn" id="2"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b2w5y4fvwqbpn" path="res://Enemies/Bat.tscn" id="7"]
 [ext_resource type="PackedScene" uid="uid://tf1shvd4t0so" path="res://World/Tree.tscn" id="9"]
 [ext_resource type="PackedScene" uid="uid://bfio7wfuseadr" path="res://Camera2D.tscn" id="10"]
+[ext_resource type="PackedScene" uid="uid://0nm85f5ywj3r" path="res://UI/HeartUI.tscn" id="10_dpd8c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_acgxc"]
 texture = ExtResource("4")
@@ -189,5 +190,7 @@ position = Vector2(216, 160)
 
 [node name="Bat3" parent="YSort" instance=ExtResource("7")]
 position = Vector2(40, 96)
+
+[node name="HeartUi" parent="." instance=ExtResource("10_dpd8c")]
 
 [editable path="Camera2D"]

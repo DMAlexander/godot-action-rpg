@@ -22,7 +22,7 @@ func set_health(value):
 #var health = max_health setget set_health
 #
 #signal no_health
-#signal health_changed(value)
+signal health_changed(value)
 #signal max_health_changed(value)
 #
 #func set_max_health(value):

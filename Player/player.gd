@@ -13,11 +13,13 @@ enum {
 
 var state = MOVE
 var roll_vector = Vector2.ZERO
+var stats = PlayerStats
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var animationState = animation_tree.get("parameters/playback")
 @onready var sword_hitbox: Area2D = $HitboxPivot/SwordHitbox
+@onready var hurtbox: Area2D = $HitboxPivot/Hurtbox
 
 func _ready():
 	animation_tree.active = true
@@ -177,3 +179,9 @@ func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 	#
 #func _on_Hurtbox_invincibility_ended():
 	#blinkAnimationPlayer.play("Stop")
+
+
+func _on_hurtbox_area_entered(area: Area2D) -> void:
+	stats.health -= 1
+	hurtbox.start_invincibility(0.5)
+	hurtbox.create_hit_effect()

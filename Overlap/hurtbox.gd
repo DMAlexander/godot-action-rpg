@@ -1,18 +1,35 @@
 extends Area2D
 
-@export var show_hit = true
-
 const HitEffect = preload("res://Effects/HitEffect.tscn")
+@onready var timer: Timer = $Timer
 
-func _ready():
-	pass
+@export var set_invincible = false
+@export var invincible: bool:
+	get:
+		return set_invincible
+	set(value):
+		set_invincible = value
 
-func _on_area_entered(area: Area2D) -> void:
-	if show_hit:
-		var effect = HitEffect.instantiate()
-		var main = get_tree().current_scene
-		main.add_child(effect)
-		effect.global_position = global_position
+signal invincibility_started
+signal invincibility_ended
+
+func set_invincible_func(value):
+	invincible = value
+	if invincible == true:
+		emit_signal("invincibility_started")
+	else:
+		emit_signal("invincibility_started")
+		
+		
+func start_invincibility(duration):
+	self.invincibile = true
+	timer.start(duration)
+
+func create_hit_effect(area: Area2D) -> void:
+	var effect = HitEffect.instantiate()
+	var main = get_tree().current_scene
+	main.add_child(effect)
+	effect.global_position = global_position
 
 #
 #const HitEffect = preload("res://Effects/HitEffect.tscn")
@@ -50,3 +67,16 @@ func _on_area_entered(area: Area2D) -> void:
 	#
 #func _on_Hurtbox_invincibility_ended():
 	#collisionShape.disabled = false
+
+
+func _on_invincibility_started() -> void:
+	set_deferred ("monitoring", false)
+
+
+func _on_invincibility_ended() -> void:
+	monitoring = true
+	
+
+
+func _on_timer_timeout() -> void:
+	self.invincible = false
